@@ -50,18 +50,24 @@
                 Discover Opportunities That Move You Forward
             </h1>
             <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-                Find jobs, scholarships, internships, grants, competitions,
+                Find jobs, scholarships, internships, 
                  and other opportunities all in one place.
             </p>
 
-            <div class="mt-8 max-w-2xl mx-auto flex flex-col sm:flex-row gap-3">
-                <input type="text" placeholder="Search for opportunities..."
+            <form method="get" class="mt-8 max-w-2xl mx-auto flex flex-col sm:flex-row gap-3">
+                <input 
+                type="text" 
+                placeholder="Search for opportunities..."
+                name="q"
+                value="{{ request.GET.q }}"
                 class="flex-1 px-5 py-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-                <button class="bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700">
+                <button 
+                type="submit"
+                class="bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700">
                     Search
                 </button>
-            </div>
+            </form>
 
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">
@@ -151,6 +157,24 @@
                     <a href="{% url  'opportunity_detail'  opportunity.pk  %}" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
                         View Opportunity
                     </a>
+                </div>
+
+                {% empty %}
+                <div class="md: col-span-2 lg:col-span-3 text-center py-12">
+                    <h3 class="text-xl font-semibold text-gray-800">
+                        {% if query %}
+                        No opportunities found for "{{ query }}"
+                        {% else %}
+                        No opportunities yet
+                        {% endif %}
+                    </h3>
+                    <p class="mt-2 text-gray-500">
+                        {% if query %}
+                        Try searching for something else.
+                        {% else %}
+                        check back soon for new opportunities.
+                        {% endif %}
+                    </p>
                 </div>
             {% endfor %}
 
