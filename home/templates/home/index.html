@@ -125,69 +125,35 @@
             </p>
 
             <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
+                {% for opportunity in opportunities %}
                 <div class="bg-white rounded-xl p-6 shadow-sm">
                     <p class="text-sm text-blue-600 font-semibold">
-                        Internship
+                        {{ opportunity.title }}
                     </p>
 
                     <h3 class="mt-2 text-xl font-bold text-gray-900">
-                        Software Development Internship
+                        {{ opportunity.organization }}
                     </h3>
                     <p class="mt-2 text-gray-600">
-                        Gain practical software development experience while working with a 
-                        professional team.
+                       {{ opportunity.description|truncatewords:5 }}
+                    </p>
+                    <p class="mt-2 text-gray-600">
+                       {{ opportunity.category }}
+                    </p>
+                    <p class="mt-2 text-gray-600">
+                       {{ opportunity.location }}
                     </p>
 
                     <p class="mt-4 text-sm text-gray-500">
-                        Deadline: September 30, 2026
+                        {{ opportunity.deadline }}
                     </p>
-                    <a href="#" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
+                    
+                    <a href="{% url  'opportunity_detail'  opportunity.pk  %}" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
                         View Opportunity
                     </a>
                 </div>
-            
+            {% endfor %}
 
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-                    <p class="text-sm text-blue-600 font-semibold">
-                        Job
-                    </p>
-
-                    <h3 class="mt-2 text-xl font-bold text-gray-900">
-                        Junior Python Developer
-                    </h3>
-                    <p class="mt-2 text-gray-600">
-                        Join a growing technology team and build real-world 
-                        software applications using python.
-                    </p>
-
-                    <p class="mt-4 text-sm text-gray-500">
-                        Deadline: October 10, 2026
-                    </p>
-                    <a href="#" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
-                        View Opportunity
-                    </a>
-                </div>
-
-                <div class="bg-white rounded-xl p-6 shadow-sm">
-                    <p class="text-sm text-blue-600 font-semibold">
-                        Scholarship
-                    </p>
-
-                    <h3 class="mt-2 text-xl font-bold text-gray-900">
-                        Undergraduate Scholarships
-                    </h3>
-                    <p class="mt-2 text-gray-600">
-                       Financial support for eligible students pursuing undergraduate studies.
-                    </p>
-
-                    <p class="mt-4 text-sm text-gray-500">
-                        Deadline: November 15, 2026
-                    </p>
-                    <a href="#" class="inline-block mt-5 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
-                        View Opportunity
-                    </a>
-                </div>
             </div>            
         </div>
     </section>
